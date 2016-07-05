@@ -20,12 +20,6 @@
         controller: 'DirectoryController',
         controllerAs: 'directory'
       })
-      // .state('lessons', {
-      //   url: '/lessons',
-      //   templateUrl: 'app/lesson/lesson.html',
-      //   controller: 'LessonController',
-      //   controllerAs: 'lesson'
-      // })
       .state('directory.lesson', {
         url: '/:lessonId',
         templateUrl: 'app/directory/lesson.html',
