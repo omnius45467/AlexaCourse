@@ -2,7 +2,6 @@
   <div>
     <acme-navbar></acme-navbar>
   </div>
-
   <div class="row" ng-repeat="lesson in directory.lessons | orderBy:'rank'">
 
       <div class="col-md-offset-2 col-md-8 col-sm-12">
@@ -11,9 +10,9 @@
           <img class="pull-right" ng-src="assets/images/{{ lesson.logo }}" alt="{{ lesson.title }}">
         </div>
         <div class="col-md-3 col-sm-3">
-          <h3 class="title"><a ng-sref={{lesson.url}}>{{lesson.title}}</a></h3>
+          <h3 class="title"><a ui-sref="lessons.lesson({lessonId: lesson.id})">{{lesson.title}}</a></h3>
         </div>
-          <div class="col-md-8 col-sm-8">
+          <div class="col-md-offset-2 col-md-6 col-sm-8">
             <!--{{lesson.md}}-->
             <div marked class="caption" ng-include=lesson.description>
 
@@ -23,6 +22,4 @@
       </div>
     </div>
   </div>
-</div>
 
-</div>

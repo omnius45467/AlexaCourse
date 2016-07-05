@@ -14,12 +14,6 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
-      // .state('about', {
-      //   url: '/about',
-      //   templateUrl: 'app/about/about.html',
-      //   controller: 'AboutController',
-      //   controllerAs: 'about'
-      // })
       .state('directory', {
         url: '/directory',
         templateUrl: 'app/directory/directory.html',
@@ -32,19 +26,28 @@
         controller: 'DirectoryController',
         controllerAs: 'directory'
       })
-      .state('/lesson/:id', {
-          url: '/lesson/:id',
+      .state('lessons', {
+        url: '/lessons',
         templateUrl: 'app/lesson/lesson.html',
         controller: 'LessonController',
         controllerAs: 'lesson'
-      });
-      // .state('lesson', {
-      //   url: '/lesson/',
-      //   templateUrl: 'app/lesson/lesson.html',
-      //   controller: 'LessonController',
-      //   controllerAs: 'lesson'
-      // });
+      })
+      .state('lessons.lesson', {
+        url: '/:lessonId',
+        resolve: {
+          lesson: function (Lessons, $stateParams) {
+            var lesson = null;
 
+            angular.forEach(Lessons.lessons, function (_lesson) {
+              if (_lesson.id === parseInt($stateParams.lessonId, 10)) {
+                lesson = _lesson;
+              }
+            });
+
+            return lesson;
+          }
+        }
+      });
     $urlRouterProvider.otherwise('/');
   }
 
