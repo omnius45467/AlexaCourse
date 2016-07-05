@@ -94,7 +94,7 @@ gulp.task('other', function () {
     path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}')
   ])
     .pipe(fileFilter)
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/dist')));
 });
 
 gulp.task('clean', function () {
