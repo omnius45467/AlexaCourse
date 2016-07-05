@@ -6,21 +6,20 @@
     .controller('DirectoryController', DirectoryController);
 
   /** @ngInject */
-  function DirectoryController($timeout, Lessons) {
+  function DirectoryController(Lessons) {
     var vm = this;
     vm.lessons = Lessons.lessons;
-    activate();
-
-    function activate() {
-      rankLessons();
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
-    }
-
+    rankLessons();
+    findLesson();
     function rankLessons() {
       angular.forEach(vm.lessons, function(lessons) {
         lessons.rank = lessons.id;
+      });
+      
+    }
+    function findLesson(){
+      angular.forEach(vm.lessons, function(_lesson){
+        return _lesson;
       });
     }
   }

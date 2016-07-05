@@ -20,30 +20,25 @@
         controller: 'DirectoryController',
         controllerAs: 'directory'
       })
-      .state('contact', {
-        url: '/contact',
-        templateUrl: 'app/contact/contact.html',
-        controller: 'DirectoryController',
-        controllerAs: 'directory'
-      })
-      .state('lessons', {
-        url: '/lessons',
-        templateUrl: 'app/lesson/lesson.html',
-        controller: 'LessonController',
-        controllerAs: 'lesson'
-      })
-      .state('lessons.lesson', {
+      // .state('lessons', {
+      //   url: '/lessons',
+      //   templateUrl: 'app/lesson/lesson.html',
+      //   controller: 'LessonController',
+      //   controllerAs: 'lesson'
+      // })
+      .state('directory.lesson', {
         url: '/:lessonId',
+        templateUrl: 'app/directory/lesson.html',
+        controller: 'LessonController',
+        controllerAs: 'lesson',
         resolve: {
           lesson: function (Lessons, $stateParams) {
             var lesson = null;
-
             angular.forEach(Lessons.lessons, function (_lesson) {
               if (_lesson.id === parseInt($stateParams.lessonId, 10)) {
                 lesson = _lesson;
               }
             });
-
             return lesson;
           }
         }

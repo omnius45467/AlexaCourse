@@ -6,27 +6,21 @@
     .controller('LessonController', LessonController);
 
   /** @ngInject */
-  function LessonController($timeout, Lessons) {
-    // debugger;
-    var vm = this;
-    vm.lessons = Lessons.lessons;
-    activate();
-    function activate() {
-      findLesson($stateParams);
-      $timeout(function () {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
-    }
+  function LessonController(Lessons, lesson) {
+    this.lesson = lesson;
+    this.lessons = Lessons.lessons;
+    // findLesson();
 
-    function findLesson() {
-      var lesson = null;
-      angular.forEach(Lessons, function (_lesson) {
-        if (_lesson.id === parseInt($stateParams.lessonId, 10)) {
-          lesson = _lesson;
-        }
-      });
-      console.log(lesson);
-      return lesson;
-    }
+    // function findLesson() {
+    //   debugger;
+    //   var lesson = null;
+    //   // angular.forEach(Lessons, function (_lesson) {
+    //   //   if (_lesson.id === 1) {
+    //   //     lesson = _lesson;
+    //   //   }
+    //   // });
+    //   // console.log(lesson);
+    //   return lesson;
+    // }
   }
 })();
